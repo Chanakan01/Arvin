@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>Arvin GPT Chat</title>
+  <title>Arvin – ผู้ช่วย AI ส่วนตัวของคุณ</title>
   <style>
     :root {
       color-scheme: dark;
@@ -15,34 +15,77 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050509;
+      background: radial-gradient(circle at top left, #16a34a33 0, #020617 40%, #020617 100%);
       color: #e5e7eb;
       height: 100vh;
       display: flex;
     }
 
+    /* ====== สีหลักโทนเขียว ====== */
+    :root {
+      --green-main: #22c55e;   /* เขียวปุ่มหลัก */
+      --green-soft: #4ade80;   /* เขียวสว่าง */
+      --green-chip: #15803d;   /* เขียวป้าย */
+      --border-dark: #1f2937;
+      --bg-deep: #020617;
+      --bg-card: #050816;
+      --bg-bubble-user: #16a34a;
+      --bg-bubble-bot: #020617;
+    }
+
     /* ====== Sidebar ====== */
     .sidebar {
       width: 260px;
-      background: #050509;
-      border-right: 1px solid #27272f;
+      background: linear-gradient(to bottom, #020617, #020617, #020617);
+      border-right: 1px solid var(--border-dark);
       display: flex;
       flex-direction: column;
     }
 
     .sidebar-top {
-      padding: 10px;
-      border-bottom: 1px solid #27272f;
+      padding: 12px;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0, #16a34a, #022c22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .brand-text-main {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: #9ca3af;
     }
 
     .new-chat-btn {
       width: 100%;
       padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #4b5563;
-      background: #111827;
-      color: #e5e7eb;
+      border-radius: 999px;
+      border: 1px solid #14532d;
+      background: linear-gradient(to right, #16a34a, #22c55e);
+      color: #022c22;
       font-size: 14px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -54,13 +97,13 @@
     }
 
     .sidebar-search {
-      padding: 8px 10px;
+      padding: 8px 12px;
     }
 
     .sidebar-search input {
       width: 100%;
       padding: 6px 8px;
-      border-radius: 6px;
+      border-radius: 999px;
       border: 1px solid #374151;
       background: #020617;
       color: #e5e7eb;
@@ -75,9 +118,9 @@
     }
 
     .conversation-item {
-      padding: 8px 8px;
-      margin: 2px 0;
-      border-radius: 6px;
+      padding: 8px 10px;
+      margin: 3px 0;
+      border-radius: 999px;
       font-size: 13px;
       cursor: pointer;
       color: #e5e7eb;
@@ -87,11 +130,11 @@
     }
 
     .conversation-item:hover {
-      background: #111827;
+      background: #020617;
     }
 
     .conversation-item.active {
-      background: #1f2937;
+      background: #064e3b;
     }
 
     .conversation-item .title {
@@ -110,13 +153,22 @@
     }
 
     .sidebar-bottom {
-      border-top: 1px solid #27272f;
-      padding: 10px;
-      font-size: 12px;
+      border-top: 1px solid var(--border-dark);
+      padding: 10px 12px;
+      font-size: 11px;
       color: #9ca3af;
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #022c22;
+      border: 1px solid #14532d;
+      color: #bbf7d0;
+      font-size: 10px;
     }
 
     /* ====== Main chat area ====== */
@@ -124,32 +176,63 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #020617 100%);
+      background:
+        radial-gradient(circle at top left, #16a34a33 0, transparent 55%),
+        radial-gradient(circle at top right, #0f172a, #020617 55%);
     }
 
     .chat-header {
-      padding: 10px 20px;
-      border-bottom: 1px solid #27272f;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(to right, #020617cc, #02061799);
+      padding: 16px 24px 10px;
+      border-bottom: 1px solid #0f172a;
+      background: linear-gradient(to right, #020617ee, #020617aa, #02061700);
+      backdrop-filter: blur(14px);
     }
 
-    .chat-header-title {
-      font-size: 15px;
-      font-weight: 600;
+    .hero-title {
+      font-size: 22px;
+      font-weight: 700;
     }
 
-    .chat-header-sub {
-      font-size: 12px;
+    .hero-title span {
+      color: var(--green-main);
+    }
+
+    .hero-subtitle {
+      margin-top: 6px;
+      font-size: 13px;
       color: #9ca3af;
+      max-width: 560px;
+    }
+
+    .header-chips {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid #14532d;
+      background: #022c22;
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
     }
 
     .messages {
       flex: 1;
-      padding: 16px 20px 100px;
+      padding: 18px 24px 120px;
       overflow-y: auto;
     }
 
@@ -164,28 +247,30 @@
 
     .message-bubble {
       padding: 8px 12px;
-      border-radius: 14px;
+      border-radius: 18px;
       max-width: 720px;
-      line-height: 1.5;
+      line-height: 1.6;
       white-space: pre-wrap;
       font-size: 14px;
+      box-shadow: 0 0 0 0 transparent;
     }
 
     .message-row.user .message-bubble {
-      background: #2563eb;
-      color: #ffffff;
-      border-bottom-right-radius: 4px;
+      background: var(--bg-bubble-user);
+      color: #ecfdf5;
+      border-bottom-right-radius: 6px;
     }
 
     .message-row.bot .message-bubble {
-      background: #111827;
+      background: var(--bg-bubble-bot);
       color: #e5e7eb;
-      border-bottom-left-radius: 4px;
+      border: 1px solid #111827;
+      border-bottom-left-radius: 6px;
     }
 
     .message-bubble img {
       max-width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
       display: block;
     }
 
@@ -204,20 +289,21 @@
       text-align: right;
     }
 
-    /* ====== Input area ====== */
+    /* ====== Input area (โทนเขียว) ====== */
     .input-wrapper {
       position: fixed;
       left: 260px;
       right: 0;
       bottom: 0;
-      padding: 8px 20px 16px;
-      background: linear-gradient(to top, #020617, #020617f0, #02061700);
-      border-top: 1px solid #27272f;
+      padding: 10px 24px 16px;
+      background:
+        linear-gradient(to top, #020617, #020617f2, #02061700);
+      border-top: 1px solid #0f172a;
     }
 
     .input-area {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       align-items: flex-end;
     }
 
@@ -227,7 +313,7 @@
       min-height: 42px;
       max-height: 120px;
       padding: 10px 12px;
-      border-radius: 10px;
+      border-radius: 999px;
       border: 1px solid #374151;
       background: #020617;
       color: #e5e7eb;
@@ -244,25 +330,28 @@
     .input-buttons button {
       border-radius: 999px;
       border: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       font-size: 12px;
       cursor: pointer;
       white-space: nowrap;
     }
 
     .btn-send {
-      background: #2563eb;
-      color: #ffffff;
+      background: linear-gradient(to right, #16a34a, #22c55e);
+      color: #022c22;
+      font-weight: 600;
     }
 
     .btn-draw {
-      background: #10b981;
-      color: #020617;
+      background: #022c22;
+      color: #bbf7d0;
+      border: 1px solid #14532d;
     }
 
     .btn-analyze {
-      background: #4b5563;
+      background: #111827;
       color: #e5e7eb;
+      border: 1px solid #374151;
     }
 
     .file-input {
@@ -277,7 +366,7 @@
     }
 
     .input-helper {
-      margin-top: 4px;
+      margin-top: 5px;
       font-size: 11px;
       color: #6b7280;
       text-align: center;
@@ -287,7 +376,6 @@
       opacity: 0.6;
       cursor: default;
     }
-
     textarea:disabled {
       opacity: 0.7;
     }
@@ -306,9 +394,16 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-top">
+      <div class="brand-row">
+        <div class="brand-logo">A</div>
+        <div>
+          <div class="brand-text-main">Arvin</div>
+          <div class="brand-text-sub">ผู้ช่วย AI ส่วนตัว</div>
+        </div>
+      </div>
       <button class="new-chat-btn" id="new-chat-btn">
         <span class="icon">＋</span>
-        <span>แชทใหม่</span>
+        <span>เริ่มแชทใหม่</span>
       </button>
     </div>
 
@@ -320,7 +415,7 @@
 
     <div class="sidebar-bottom">
       <span>Arvin GPT</span>
-      <span style="opacity:.7;">local chat</span>
+      <span class="pill">เวอร์ชันทดลอง</span>
     </div>
   </aside>
 
@@ -328,20 +423,29 @@
   <div class="chat-wrapper">
     <header class="chat-header">
       <div>
-        <div class="chat-header-title" id="chat-header-title">แชทใหม่</div>
-        <div class="chat-header-sub">ผู้ช่วย Arvin – วิเคราะห์ / วาดรูป / ค้นเว็บได้</div>
+        <div class="hero-title">
+          Arvin – <span>ผู้ช่วย AI ส่วนตัว</span> ของคุณ
+        </div>
+        <div class="hero-subtitle">
+          ถามการบ้าน ปรึกษาเรื่องชีวิต ขอให้ช่วยคิดไอเดีย หรือให้ช่วยสร้างรูป & วิเคราะห์รูปได้ในที่เดียว
+        </div>
+        <div class="header-chips">
+          <div class="chip"><span class="chip-dot"></span><span>รองรับภาษาไทยเต็มรูปแบบ</span></div>
+          <div class="chip"><span>ใช้สมองระดับเดียวกับ ChatGPT</span></div>
+          <div class="chip"><span>สร้าง & วิเคราะห์รูปภาพได้</span></div>
+        </div>
       </div>
     </header>
 
     <main class="messages" id="messages"></main>
   </div>
 
-  <!-- Input area (fixed bottom) -->
+  <!-- Input area -->
   <div class="input-wrapper">
     <form class="input-area" id="chat-form">
       <textarea id="user-input" rows="1" placeholder="พิมพ์ข้อความของคุณที่นี่..."></textarea>
       <div class="input-buttons">
-        <button type="submit" class="btn-send">ส่ง</button>
+        <button type="submit" class="btn-send">ส่งข้อความ</button>
         <button type="button" id="draw-btn" class="btn-draw">วาดรูป</button>
         <button type="button" id="analyze-btn" class="btn-analyze">วิเคราะห์รูป</button>
         <div class="file-input">
@@ -350,12 +454,12 @@
       </div>
     </form>
     <div class="input-helper">
-      Arvin ใช้ /api/chat, /api/generate-image และ /api/analyze-image จากเซิร์ฟเวอร์ของคุณ
+      Arvin ใช้สมองจาก OpenAI + API ของคุณเอง | ประวัติแชทถูกเก็บไว้ในเครื่องของคุณเท่านั้น
     </div>
   </div>
 
   <script>
-    // ====== ตัวแปรและ state ======
+    /* ---------- ตัวจัดการแชท / ห้องแชท (เหมือนเวอร์ชันก่อน) ---------- */
     const messagesEl = document.getElementById("messages");
     const form = document.getElementById("chat-form");
     const input = document.getElementById("user-input");
@@ -364,16 +468,12 @@
     const imageInput = document.getElementById("image-input");
     const newChatBtn = document.getElementById("new-chat-btn");
     const convoListEl = document.getElementById("conversation-list");
-    const chatHeaderTitle = document.getElementById("chat-header-title");
     const searchInput = document.getElementById("search-input");
 
     const STORAGE_KEY = "arvin_conversations_v1";
-
-    // โครงสร้าง: [{ id, title, messages: [{role, type, content}] }]
     let conversations = [];
     let currentConversationId = null;
 
-    // ====== LocalStorage ======
     function loadConversations() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
@@ -394,11 +494,7 @@
 
     function createNewConversation() {
       const id = Date.now().toString();
-      const convo = {
-        id,
-        title: "แชทใหม่",
-        messages: [],
-      };
+      const convo = { id, title: "แชทใหม่", messages: [] };
       conversations.unshift(convo);
       currentConversationId = id;
       saveConversations();
@@ -422,7 +518,6 @@
       convo.title = t || "แชทใหม่";
     }
 
-    // ====== UI Helpers ======
     function clearMessagesUI() {
       messagesEl.innerHTML = "";
     }
@@ -484,9 +579,6 @@
       clearMessagesUI();
       const convo = getCurrentConversation();
       if (!convo) return;
-
-      chatHeaderTitle.textContent = convo.title || "แชทใหม่";
-
       for (const msg of convo.messages) {
         if (msg.type === "image") {
           addImageMessage(msg.content, msg.role);
@@ -556,7 +648,6 @@
         .map((m) => ({ role: m.role, content: m.content }));
     }
 
-    // ====== API Calls ======
     async function callChatAPI() {
       const text = input.value.trim();
       if (!text) return;
@@ -693,7 +784,7 @@
       reader.readAsDataURL(file);
     }
 
-    // ====== Events ======
+    // Events
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       callChatAPI();
@@ -715,13 +806,12 @@
       renderConversationList();
     });
 
-    // auto resize textarea
     input.addEventListener("input", () => {
       input.style.height = "auto";
       input.style.height = Math.min(input.scrollHeight, 120) + "px";
     });
 
-    // ====== Init ======
+    // Init
     (function init() {
       conversations = loadConversations();
       if (!conversations.length) {
