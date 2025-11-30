@@ -7,10 +7,7 @@
     :root {
       color-scheme: dark;
     }
-
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -21,14 +18,11 @@
       display: flex;
     }
 
-    /* ====== สีหลักโทนเขียว ====== */
     :root {
-      --green-main: #22c55e;   /* เขียวปุ่มหลัก */
-      --green-soft: #4ade80;   /* เขียวสว่าง */
-      --green-chip: #15803d;   /* เขียวป้าย */
+      --green-main: #22c55e;
+      --green-soft: #4ade80;
       --border-dark: #1f2937;
       --bg-deep: #020617;
-      --bg-card: #050816;
       --bg-bubble-user: #16a34a;
       --bg-bubble-bot: #020617;
     }
@@ -36,24 +30,21 @@
     /* ====== Sidebar ====== */
     .sidebar {
       width: 260px;
-      background: linear-gradient(to bottom, #020617, #020617, #020617);
+      background: #020617;
       border-right: 1px solid var(--border-dark);
       display: flex;
       flex-direction: column;
     }
-
     .sidebar-top {
       padding: 12px;
       border-bottom: 1px solid var(--border-dark);
     }
-
     .brand-row {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 10px;
     }
-
     .brand-logo {
       width: 26px;
       height: 26px;
@@ -66,16 +57,8 @@
       font-weight: 700;
       color: #e5e7eb;
     }
-
-    .brand-text-main {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .brand-text-sub {
-      font-size: 11px;
-      color: #9ca3af;
-    }
+    .brand-text-main { font-size: 15px; font-weight: 600; }
+    .brand-text-sub { font-size: 11px; color: #9ca3af; }
 
     .new-chat-btn {
       width: 100%;
@@ -91,15 +74,9 @@
       gap: 8px;
       cursor: pointer;
     }
+    .new-chat-btn span.icon { font-size: 16px; }
 
-    .new-chat-btn span.icon {
-      font-size: 16px;
-    }
-
-    .sidebar-search {
-      padding: 8px 12px;
-    }
-
+    .sidebar-search { padding: 8px 12px; }
     .sidebar-search input {
       width: 100%;
       padding: 6px 8px;
@@ -116,7 +93,6 @@
       overflow-y: auto;
       padding: 4px 6px 8px;
     }
-
     .conversation-item {
       padding: 8px 10px;
       margin: 3px 0;
@@ -128,22 +104,14 @@
       align-items: center;
       gap: 8px;
     }
-
-    .conversation-item:hover {
-      background: #020617;
-    }
-
-    .conversation-item.active {
-      background: #064e3b;
-    }
-
+    .conversation-item:hover { background: #020617; }
+    .conversation-item.active { background: #064e3b; }
     .conversation-item .title {
       flex: 1;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
     .conversation-item button.delete {
       background: transparent;
       border: none;
@@ -161,7 +129,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .pill {
       padding: 2px 8px;
       border-radius: 999px;
@@ -171,7 +138,7 @@
       font-size: 10px;
     }
 
-    /* ====== Main chat area ====== */
+    /* ====== Main chat ====== */
     .chat-wrapper {
       flex: 1;
       display: flex;
@@ -186,24 +153,24 @@
       border-bottom: 1px solid #0f172a;
       background: linear-gradient(to right, #020617ee, #020617aa, #02061700);
       backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
     }
-
+    .hero-left {
+      max-width: 640px;
+    }
     .hero-title {
       font-size: 22px;
       font-weight: 700;
     }
-
-    .hero-title span {
-      color: var(--green-main);
-    }
-
+    .hero-title span { color: var(--green-main); }
     .hero-subtitle {
       margin-top: 6px;
       font-size: 13px;
       color: #9ca3af;
-      max-width: 560px;
     }
-
     .header-chips {
       margin-top: 10px;
       display: flex;
@@ -211,7 +178,6 @@
       gap: 6px;
       font-size: 11px;
     }
-
     .chip {
       padding: 4px 9px;
       border-radius: 999px;
@@ -222,7 +188,6 @@
       align-items: center;
       gap: 4px;
     }
-
     .chip-dot {
       width: 6px;
       height: 6px;
@@ -230,21 +195,37 @@
       background: #22c55e;
     }
 
+    /* ปุ่ม ||| พับหัว */
+    .hero-toggle {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #9ca3af;
+      padding: 6px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(4px);
+    }
+
+    /* ซ่อน subtitle + chips เมื่อถูกพับ */
+    .hero-collapsed .hero-subtitle,
+    .hero-collapsed .header-chips {
+      display: none;
+    }
+
     .messages {
       flex: 1;
       padding: 18px 24px 120px;
       overflow-y: auto;
     }
-
     .message-row {
       display: flex;
       margin-bottom: 12px;
     }
-
-    .message-row.user {
-      justify-content: flex-end;
-    }
-
+    .message-row.user { justify-content: flex-end; }
     .message-bubble {
       padding: 8px 12px;
       border-radius: 18px;
@@ -252,141 +233,157 @@
       line-height: 1.6;
       white-space: pre-wrap;
       font-size: 14px;
-      box-shadow: 0 0 0 0 transparent;
     }
-
     .message-row.user .message-bubble {
       background: var(--bg-bubble-user);
       color: #ecfdf5;
       border-bottom-right-radius: 6px;
     }
-
     .message-row.bot .message-bubble {
       background: var(--bg-bubble-bot);
       color: #e5e7eb;
       border: 1px solid #111827;
       border-bottom-left-radius: 6px;
     }
-
     .message-bubble img {
       max-width: 100%;
       border-radius: 12px;
       display: block;
     }
-
     .message-label {
       font-size: 11px;
       color: #9ca3af;
       margin-bottom: 2px;
     }
+    .message-row.bot .message-label { margin-left: 4px; }
+    .message-row.user .message-label { margin-right: 4px; text-align: right; }
 
-    .message-row.bot .message-label {
-      margin-left: 4px;
-    }
-
-    .message-row.user .message-label {
-      margin-right: 4px;
-      text-align: right;
-    }
-
-    /* ====== Input area (โทนเขียว) ====== */
+    /* ====== Input area (สไตล์ ChatGPT มือถือ) ====== */
     .input-wrapper {
       position: fixed;
       left: 260px;
       right: 0;
       bottom: 0;
       padding: 10px 24px 16px;
-      background:
-        linear-gradient(to top, #020617, #020617f2, #02061700);
+      background: linear-gradient(to top, #020617, #020617f2, #02061700);
       border-top: 1px solid #0f172a;
     }
 
-    .input-area {
+    .input-bar {
       display: flex;
+      align-items: center;
       gap: 8px;
-      align-items: flex-end;
-    }
-
-    .input-area textarea {
-      flex: 1;
-      resize: none;
-      min-height: 42px;
-      max-height: 120px;
-      padding: 10px 12px;
+      background: #020617;
       border-radius: 999px;
       border: 1px solid #374151;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 14px;
-      outline: none;
+      padding: 6px 10px;
     }
 
-    .input-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .input-buttons button {
+    .circle-btn {
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: none;
-      padding: 6px 12px;
-      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .btn-send {
-      background: linear-gradient(to right, #16a34a, #22c55e);
-      color: #022c22;
-      font-weight: 600;
-    }
-
-    .btn-draw {
-      background: #022c22;
-      color: #bbf7d0;
-      border: 1px solid #14532d;
-    }
-
-    .btn-analyze {
+    .circle-btn.left {
       background: #111827;
       color: #e5e7eb;
-      border: 1px solid #374151;
+      font-size: 20px;
+      line-height: 0;
     }
 
-    .file-input {
-      margin-top: 4px;
-      font-size: 11px;
-      color: #9ca3af;
+    .circle-btn.right {
+      background: #22c55e;
+      color: #022c22;
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .file-input input[type="file"] {
-      font-size: 11px;
+    .input-bar textarea {
+      flex: 1;
+      resize: none;
+      border: none;
+      outline: none;
+      background: transparent;
       color: #e5e7eb;
+      font-size: 14px;
+      padding: 6px 4px;
+      max-height: 100px;
     }
 
     .input-helper {
-      margin-top: 5px;
+      margin-top: 6px;
       font-size: 11px;
       color: #6b7280;
       text-align: center;
     }
 
-    .input-buttons button:disabled {
+    /* เมนูซ่อนจากปุ่ม + */
+    .more-menu {
+      position: absolute;
+      bottom: 64px;
+      left: 24px;
+      background: #020617;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      display: none;
+      min-width: 180px;
+      font-size: 12px;
+    }
+    .more-menu.visible { display: block; }
+    .more-menu-title {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+    .more-menu button {
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 6px 10px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: left;
+    }
+    .more-menu button.menu-draw {
+      background: #022c22;
+      color: #bbf7d0;
+      border: 1px solid #14532d;
+    }
+    .more-menu button.menu-analyze {
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+    }
+    .more-menu .file-input {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .more-menu input[type="file"] {
+      font-size: 11px;
+      color: #e5e7eb;
+      width: 100%;
+    }
+
+    .circle-btn:disabled,
+    textarea:disabled {
       opacity: 0.6;
       cursor: default;
     }
-    textarea:disabled {
-      opacity: 0.7;
-    }
 
     @media (max-width: 900px) {
-      .sidebar {
-        display: none;
-      }
-      .input-wrapper {
-        left: 0;
-      }
+      .sidebar { display: none; }
+      .input-wrapper { left: 0; }
     }
   </style>
 </head>
@@ -421,8 +418,8 @@
 
   <!-- Main chat -->
   <div class="chat-wrapper">
-    <header class="chat-header">
-      <div>
+    <header class="chat-header" id="hero-header">
+      <div class="hero-left">
         <div class="hero-title">
           Arvin – <span>ผู้ช่วย AI ส่วนตัว</span> ของคุณ
         </div>
@@ -435,6 +432,7 @@
           <div class="chip"><span>สร้าง & วิเคราะห์รูปภาพได้</span></div>
         </div>
       </div>
+      <button class="hero-toggle" id="hero-toggle">|||</button>
     </header>
 
     <main class="messages" id="messages"></main>
@@ -442,33 +440,42 @@
 
   <!-- Input area -->
   <div class="input-wrapper">
-    <form class="input-area" id="chat-form">
-      <textarea id="user-input" rows="1" placeholder="พิมพ์ข้อความของคุณที่นี่..."></textarea>
-      <div class="input-buttons">
-        <button type="submit" class="btn-send">ส่งข้อความ</button>
-        <button type="button" id="draw-btn" class="btn-draw">วาดรูป</button>
-        <button type="button" id="analyze-btn" class="btn-analyze">วิเคราะห์รูป</button>
-        <div class="file-input">
-          <input type="file" id="image-input" accept="image/*" />
-        </div>
+    <!-- เมนูซ่อนจากปุ่ม + -->
+    <div class="more-menu" id="more-menu">
+      <div class="more-menu-title">เครื่องมือเพิ่มเติม</div>
+      <button type="button" id="draw-btn" class="menu-draw">🎨 วาดรูปจากข้อความปัจจุบัน</button>
+      <button type="button" id="analyze-btn" class="menu-analyze">🖼️ วิเคราะห์รูปจากไฟล์</button>
+      <div class="file-input">
+        <input type="file" id="image-input" accept="image/*" />
       </div>
+    </div>
+
+    <form class="input-bar" id="chat-form">
+      <button type="button" class="circle-btn left" id="more-btn">+</button>
+      <textarea id="user-input" rows="1" placeholder="ถามอะไรก็ได้..."></textarea>
+      <button type="submit" class="circle-btn right" id="send-btn">➤</button>
     </form>
     <div class="input-helper">
-      Arvin ใช้สมองจาก OpenAI + API ของคุณเอง | ประวัติแชทถูกเก็บไว้ในเครื่องของคุณเท่านั้น
+      Arvin ใช้สมองจาก OpenAI + API ของคุณเอง | ประวัติแชทเก็บไว้ในเครื่องของคุณเท่านั้น
     </div>
   </div>
 
   <script>
-    /* ---------- ตัวจัดการแชท / ห้องแชท (เหมือนเวอร์ชันก่อน) ---------- */
+    /* ====== state ห้องแชท ====== */
     const messagesEl = document.getElementById("messages");
     const form = document.getElementById("chat-form");
     const input = document.getElementById("user-input");
-    const drawBtn = document.getElementById("draw-btn");
-    const analyzeBtn = document.getElementById("analyze-btn");
-    const imageInput = document.getElementById("image-input");
     const newChatBtn = document.getElementById("new-chat-btn");
     const convoListEl = document.getElementById("conversation-list");
     const searchInput = document.getElementById("search-input");
+    const moreBtn = document.getElementById("more-btn");
+    const moreMenu = document.getElementById("more-menu");
+    const drawBtn = document.getElementById("draw-btn");
+    const analyzeBtn = document.getElementById("analyze-btn");
+    const imageInput = document.getElementById("image-input");
+    const sendBtn = document.getElementById("send-btn");
+    const heroHeader = document.getElementById("hero-header");
+    const heroToggle = document.getElementById("hero-toggle");
 
     const STORAGE_KEY = "arvin_conversations_v1";
     let conversations = [];
@@ -483,15 +490,12 @@
         return [];
       }
     }
-
     function saveConversations() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(conversations));
     }
-
     function getCurrentConversation() {
       return conversations.find((c) => c.id === currentConversationId);
     }
-
     function createNewConversation() {
       const id = Date.now().toString();
       const convo = { id, title: "แชทใหม่", messages: [] };
@@ -501,13 +505,11 @@
       renderConversationList();
       renderMessages();
     }
-
     function setCurrentConversation(id) {
       currentConversationId = id;
       renderConversationList();
       renderMessages();
     }
-
     function updateConversationTitleFromFirstMessage(convo) {
       const first = convo.messages.find(
         (m) => m.role === "user" && m.type === "text"
@@ -518,10 +520,10 @@
       convo.title = t || "แชทใหม่";
     }
 
+    /* ====== แสดงผล UI ====== */
     function clearMessagesUI() {
       messagesEl.innerHTML = "";
     }
-
     function addTextMessage(text, role) {
       const row = document.createElement("div");
       row.classList.add("message-row", role === "user" ? "user" : "bot");
@@ -546,7 +548,6 @@
 
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
-
     function addImageMessage(src, role) {
       const row = document.createElement("div");
       row.classList.add("message-row", role === "user" ? "user" : "bot");
@@ -574,7 +575,6 @@
 
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
-
     function renderMessages() {
       clearMessagesUI();
       const convo = getCurrentConversation();
@@ -587,7 +587,6 @@
         }
       }
     }
-
     function renderConversationList() {
       const q = (searchInput.value || "").toLowerCase();
       convoListEl.innerHTML = "";
@@ -596,9 +595,7 @@
         .forEach((convo) => {
           const item = document.createElement("div");
           item.classList.add("conversation-item");
-          if (convo.id === currentConversationId) {
-            item.classList.add("active");
-          }
+          if (convo.id === currentConversationId) item.classList.add("active");
 
           const titleSpan = document.createElement("span");
           titleSpan.classList.add("title");
@@ -616,7 +613,6 @@
             if (e.target === delBtn) return;
             setCurrentConversation(convo.id);
           });
-
           delBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             if (!confirm("ลบแชทนี้ไหม?")) return;
@@ -633,10 +629,10 @@
 
     function setInputsDisabled(disabled) {
       input.disabled = disabled;
+      sendBtn.disabled = disabled;
       drawBtn.disabled = disabled;
       analyzeBtn.disabled = disabled;
       imageInput.disabled = disabled;
-      form.querySelector("button[type='submit']").disabled = disabled;
     }
 
     function buildMessagesForAPI(convo) {
@@ -648,6 +644,7 @@
         .map((m) => ({ role: m.role, content: m.content }));
     }
 
+    /* ====== เรียก API ====== */
     async function callChatAPI() {
       const text = input.value.trim();
       if (!text) return;
@@ -663,7 +660,7 @@
       addTextMessage(text, "user");
 
       input.value = "";
-      input.style.height = "42px";
+      input.style.height = "24px";
       setInputsDisabled(true);
 
       try {
@@ -694,7 +691,10 @@
 
     async function callDrawAPI() {
       const text = input.value.trim();
-      if (!text) return;
+      if (!text) {
+        alert("พิมพ์คำอธิบายรูปก่อนนะครับ");
+        return;
+      }
 
       const convo = getCurrentConversation();
       if (!convo) return;
@@ -707,6 +707,7 @@
       renderConversationList();
       addTextMessage(userText, "user");
       setInputsDisabled(true);
+      moreMenu.classList.remove("visible");
 
       try {
         const res = await fetch("/api/generate-image", {
@@ -753,6 +754,7 @@
         saveConversations();
         addImageMessage(dataUrl, "user");
         setInputsDisabled(true);
+        moreMenu.classList.remove("visible");
 
         try {
           const res = await fetch("/api/analyze-image", {
@@ -784,18 +786,10 @@
       reader.readAsDataURL(file);
     }
 
-    // Events
+    /* ====== Events ====== */
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       callChatAPI();
-    });
-
-    drawBtn.addEventListener("click", () => {
-      callDrawAPI();
-    });
-
-    analyzeBtn.addEventListener("click", () => {
-      callAnalyzeAPI();
     });
 
     newChatBtn.addEventListener("click", () => {
@@ -808,10 +802,34 @@
 
     input.addEventListener("input", () => {
       input.style.height = "auto";
-      input.style.height = Math.min(input.scrollHeight, 120) + "px";
+      input.style.height = Math.min(input.scrollHeight, 100) + "px";
     });
 
-    // Init
+    moreBtn.addEventListener("click", () => {
+      moreMenu.classList.toggle("visible");
+    });
+
+    drawBtn.addEventListener("click", () => {
+      callDrawAPI();
+    });
+
+    analyzeBtn.addEventListener("click", () => {
+      callAnalyzeAPI();
+    });
+
+    // ปิดเมนูเมื่อคลิกนอก
+    document.addEventListener("click", (e) => {
+      if (!moreMenu.contains(e.target) && e.target !== moreBtn) {
+        moreMenu.classList.remove("visible");
+      }
+    });
+
+    // ปุ่ม ||| พับหัว
+    heroToggle.addEventListener("click", () => {
+      heroHeader.classList.toggle("hero-collapsed");
+    });
+
+    // init
     (function init() {
       conversations = loadConversations();
       if (!conversations.length) {
@@ -821,7 +839,7 @@
         renderConversationList();
         renderMessages();
       }
-      input.style.height = "42px";
+      input.style.height = "24px";
     })();
   </script>
 </body>
